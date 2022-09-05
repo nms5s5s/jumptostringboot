@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="/logo/repick_simbol_blue.svg.svg">
+    <title>회원정보</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .profileform {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: #f0f0f0;
+        }
+
+        .wrapper,
+        .social-icons a,
+        .buttons button {
+            background: #f0f0f0;
+            box-shadow: -3px -3px 7px #ffffff, 3px 3px 5px #bebebf;
+
+        }
+
+        .wrapper {
+            position: relative;
+            width: 350px;
+            padding: 30px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            /*justify-content: center;*/
+            flex-direction: column;
+        }
+
+        .inner-area img {
+            margin-left: 18%;
+            height: calc(70% - 25px);
+            width: calc(70% - 25px);
+            border-radius: 50%;
+        }
+
+        .wrapper .nickname {
+            font-size: 23px;
+            font-weight: 500;
+            color: #191c1f;
+            margin: 10px 0 5px 0;
+        }
+
+        .buttons button {
+            width: 120px;
+            height: 40px;
+            background: #86b7fe;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div layout:fragment="content">
+        <div class="profileform">
+            <div class="wrapper">
+                <div class="inner-area">
+                    <img src="/profile/profile_basic.jpg"/>
+<!--                    <img th:src="@{${siteUser.filepath}}-->
+                </div>
+                <div class="nickname" th:text="${siteUser.nickname}"></div>
+                <div class="email" th:text="${siteUser.email}"></div>
+                <br>
+                <a  th:href="@{/user/modify}" class="buttons" >
+                    <button>수정</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

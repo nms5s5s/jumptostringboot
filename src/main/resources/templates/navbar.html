@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>네비게이션 </title>
+
+</head>
+<body>
+    <nav th:fragment="navbarFragment" class="navbar navbar-light" style="background-color: lightsteelblue ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img src="/logo/repick_logo_white.svg" width="35%" class="d-inline-block align-text-bottom">
+            </a>
+
+<!--            검색창-->
+            <form class="d-flex justify-content-center">
+                <input class="form-control me-4" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light" type="submit">Search</button>
+            </form>
+<!--            프로필-->
+            <a th:href="@{/user/profile}" sec:authorize="isAuthenticated()">
+               <img src="/profile/profile_basic.jpg" style=" height: calc(67px - 25px);
+                                                    width: calc(67px - 25px);
+                                                    border-radius: 50%;">
+            </a>
+<!--            햄버거-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+<!--             메뉴바-->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/user/login}">로그인</a>
+                        <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/user/logout}">로그아웃</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/user/signup}">회원가입</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</body>
+</html>

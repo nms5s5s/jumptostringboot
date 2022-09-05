@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #paging{
+
+        }
+        #paging>ul {
+            list-style:none;
+            float:left;
+            display:inline;
+        }
+        /*화살표 방향*/
+        #paging>ul li {
+            float: left;
+        }
+        /*화살표 박스*/
+        #paging>ul li a {
+            float:left;
+            padding:4px;
+            margin-right:3px;
+            width:15px;
+            color:#000;
+            font:bold 12px tahoma;
+            border:1px solid #eee;
+            text-align:center;
+            text-decoration:none;
+        }
+        #paging>ul li a:hover, ul li a:focus {
+            color:#fff;
+            border:1px solid #f40;
+            background-color:#f40;
+        }
+    </style>
+</head>
+<body>
+<div id="paging">
+<ul>
+    <li><a href="#">이전</a></li>
+    <li><a href="#">◀</a></li>
+    <li><a href="#">▶</a></li>
+    <li><a href="#">다음</a></li>
+
+</ul>
+</div>
+</body>
+</html>

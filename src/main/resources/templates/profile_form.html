@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="/logo/repick_simbol_blue.svg.svg">
+    <title>회원정보</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .profileform {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: #f0f0f0;
+        }
+
+        .wrapper,
+        .social-icons a,
+        .buttons button {
+            background: #f0f0f0;
+            box-shadow: -3px -3px 7px #ffffff, 3px 3px 5px #bebebf;
+
+        }
+
+        .wrapper {
+            position: relative;
+            width: 350px;
+            padding: 30px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            /*justify-content: center;*/
+            flex-direction: column;
+        }
+
+        .img {
+            margin-left: 5%;
+            height: calc(70% - 25px);
+            width: calc(70% - 25px);
+            border-radius: 50%;
+        }
+
+
+        .buttons button {
+            width: 120px;
+            height: 40px;
+            background: #86b7fe;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 20px;
+        }
+
+        .text-box {
+            width: 100%;
+            height: 30%;
+        }
+
+    </style>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="profileform">
+        <div class="profileform">
+            <div class="wrapper">
+                <div><h3>회원정보 수정</h3></div>
+                <hr>
+                <form th:action="@{/user/modify}" th:object="${userCreateForm}" method="post">
+                    <img src="/profile/profile_basic.jpg" class="img">
+                    <br>
+                    <div><input type="file" name="file"></div>
+                    <br>
+                    <div>
+                        <label>사용자ID</label><br>
+                        <input class="text-box" th:field="${siteUser.username}" readonly>
+                    </div>
+                    <div>
+                        <label>닉네임</label><br>
+                        <input type="text" th:field="${siteUser.nickname}">
+                    </div>
+                    <div>
+                        <label>이메일</label><br>
+                        <input type="text" th:field="${siteUser.email}" readonly>
+                    </div>
+                    <br>
+                    <a th:href="@{/user/modify}" class="buttons">
+                        <button>수정완료</button>
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

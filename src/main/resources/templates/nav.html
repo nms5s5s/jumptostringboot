@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul, ol {
+            list-style: none
+        }
+
+        /*밑줄 삭제, 글자 색상, 글자사이즈*/
+        a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 15px
+        }
+
+        .container {
+            width: 100%;
+            background-color: lightsteelblue;
+        }
+        .container :nth-child(1) {
+            display: flex;
+        }
+
+        .navbar {
+            display: inline-block;
+        }
+
+        .nav-menu {
+            float: right;
+            line-height: 80px;
+            padding: 0 30px;
+            background-color: #5c636a;
+        }
+
+        /*로고*/
+        .logo-img {
+            float: left;
+            width: 10%;
+            height: 5%;
+            margin: 1%;
+        }
+
+
+        /*----------------검색창----------------*/
+        #nav .search-box {
+            display: inline-block;
+            height: 30px;
+            background-color: #ffffff;
+            border: 1px solid #ffffff;
+            border-radius: 30px;
+            transition: 0.4s;
+            width: 30px;
+        }
+
+        #nav .search-box:hover {
+            box-shadow: 0px 0px 5px 1px #ffffff;
+            width: 282px;
+        }
+
+        /*검색 아이콘넣기*/
+        #nav .search-btn {
+            text-decoration: none;
+            float: right;
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            border-radius: 50%;
+            color: #51e3d4;
+        }
+
+        #nav .search-box:hover > .search-btn {
+            background-color: #fff;
+        }
+
+        #nav .search-txt {
+            display: flex;
+            padding: 0;
+            width: 0px;
+            border: none;
+            background: none;
+            outline: none;
+            float: left;
+            font-size: 1rem;
+            line-height: 30px;
+            transition: .4s;
+        }
+
+        #nav .search-box:hover > .search-txt {
+            width: 240px;
+            padding: 0 6px;
+        }
+    </style>
+</head>
+<body>
+<nav id="nav">
+    <div class="container">
+<!-----로고 이미지----->
+
+        <a href="/" class="logo-img"><img src="/logo/repick_logo_white.svg"></a>
+
+<!------------------->
+        <div class="navbar">
+            <ul class="nav-menu">
+                <li><a th:href="@{/question/list}">게시판</a></li>
+                <li><a sec:authorize="isAnonymous()" th:href="@{/user/login}">로그인</a></li>
+                <li><a sec:authorize="isAuthenticated()" th:href="@{/user/logout}">로그아웃</a></li>
+                <li><a th:href="@{/user/signup}">회원가입</a></li>
+            </ul>
+        </div>
+        <!------------------------->
+        <a class="profile-img" th:href="@{/user/profile}" sec:authorize="isAuthenticated()">
+            <img src="/profile/profile_basic.jpg">
+        </a>
+        <!----------검색창----------->
+        <div class="search-box">
+            <input type="text" class="search-txt" name="" placeholder="Type to search">
+            <a class="search-btn" href="#">
+                <i class="fas fa-search"></i>
+            </a>
+        </div>
+        <!------------------------>
+    </div>
+</nav>
+</body>
+</html>
